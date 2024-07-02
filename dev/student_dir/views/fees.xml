@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="student_fees_tree_view" model="ir.ui.view">
+            <field name="name">student.fees.tree.view</field>
+            <field name="model">stu.odoo_fees</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Name"/>
+                    <field name="current_month_fees" string="Current Month Fees"/>
+                </tree>
+            </field>
+        </record>
+        <record id="student_fees_form_view" model="ir.ui.view">
+            <field name="name">student.fees.form.view</field>
+            <field name="model">stu.odoo_fees</field>
+            <field name="arch" type="xml">
+                <form string="Fees Info.">
+                    <sheet>
+                        <group>
+
+
+
+
+
+
+                            <field name="name" string="Name"/>
+                            <field name="paid_current_month" string="Current Paid Month"/>
+                            <field name="current_month_fees" string="Current Month Fees"/>
+                            <field name="amount" string="Amount"/>
+                            <field name="date_paid" string="Date Paid"/>
+                            <field name="student_id" string="Students"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_fees_action" model="ir.actions.act_window">
+            <field name="name">Fees</field>
+            <field name="res_model">stu.odoo_fees</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="student_fees_main_menu"
+                  name="List Subject"
+                  parent="student_fees_root_menu"
+                  action="student_fees_action"/>
+    </data>
+</odoo>

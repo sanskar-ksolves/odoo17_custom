@@ -1,0 +1,7 @@
+<odoo>
+    <template id="CustomActionTemplate">
+        <div>
+            <!-- This is where the custom action content will be injected -->
+        </div>
+    </template>
+</odoo>

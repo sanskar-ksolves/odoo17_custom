@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="student_info_tree_view" model="ir.ui.view">
+            <field name="name">student.info.tree.view</field>
+            <field name="model">stu.student_info</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                    <field name="dob"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="student_info_form_view" model="ir.ui.view">
+            <field name="name">student.info.form.view</field>
+            <field name="model">stu.student_info</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <header>
+                        <button name="%(action_student_info_wizard)d" string="Open Wizard" type="action" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                            <field name="roll_no" string="Roll No"/>
+                            <field name="dob" string="Date Of Birth"/>
+                            <field name="age" string="Age"/>
+                            <field name="address" string="Address"/>
+                            <field name="test" string="Test"/>
+                        </group>
+                        <group>
+                            <field name="class_id" string="Class"/>
+                        </group>
+                        <group>
+                            <field name="subject_ids" string="Subjects"/>
+                        </group>
+                        <group>
+                            <field name="fees_id" string="Fees"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Pivot View -->
+        <record id="student_info_pivot_view" model="ir.ui.view">
+            <field name="name">student.info.pivot.view</field>
+            <field name="model">stu.student_info</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="name" type="row"/>
+                    <field name="age" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+        <!-- Graph View -->
+        <record id="student_info_graph_view" model="ir.ui.view">
+            <field name="name">student.info.graph.view</field>
+            <field name="model">stu.student_info</field>
+            <field name="arch" type="xml">
+                <graph string="Student Info">
+                    <field name="age" type="measure"/>
+                    <field name="dob" type="col"/>
+                </graph>
+            </field>
+        </record>
+        <!-- Calendar View -->
+        <record id="student_info_calendar_view" model="ir.ui.view">
+            <field name="name">student.info.calendar.view</field>
+            <field name="model">stu.student_info</field>
+            <field name="arch" type="xml">
+                <calendar string="Student Info" date_start="dob">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+        <!--        &lt;!&ndash; Cohort View &ndash;&gt;-->
+        <!--        <record id="student_info_cohort_view" model="ir.ui.view">-->
+        <!--            <field name="name">student.info.cohort.view</field>-->
+        <!--            <field name="model">stu.student_info</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <cohort string="Student Info" date_start="dob" date_stop="age">-->
+        <!--                    <field name="name"/>-->
+        <!--                </cohort>-->
+        <!--            </field>-->
+        <!--        </record>-->
+        <!-- Dashboard View -->
+        <template id="student_info_dashboard_view" name="Student Info Dashboard">
+            <t t-call="web.basic_layout">
+                <t t-set="title">Student Info Dashboard</t>
+                <div class="o_dashboard">
+                    <div class="o_dashboard_header">
+                        <h1>Student Info Overview</h1>
+                    </div>
+                    <div class="o_dashboard_content">
+                        <t t-call="student_info_kanban_view"/>
+                        <t t-call="student_info_graph_view"/>
+                        <t t-call="student_info_pivot_view"/>
+                        <!-- Add more views as needed -->
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <!-- Kanban View -->
+        <record id="student_info_kanban_view" model="ir.ui.view">
+            <field name="name">student.info.kanban.view</field>
+            <field name="model">stu.student_info</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                    <field name="dob"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                                <div>
+                                    <field name="roll_no"/>
+                                </div>
+                                <div>
+                                    <field name="dob"/>
+                                </div>
+                                <div>
+                                    <field name="age"/>
+                                </div>
+                                <div>
+                                    <field name="address"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="student_info_action" model="ir.actions.act_window">
+            <field name="name">Student Info</field>
+            <field name="res_model">stu.student_info</field>
+            <field name="view_mode">tree,form,kanban,pivot,graph,calendar</field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem id="student_info_main_menu"
+                  name="Student Information"
+                  parent="student_info_root_menu"
+                  action="student_info_action"/>
+    </data>
+</odoo>

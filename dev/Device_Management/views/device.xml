@@ -1,0 +1,50 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_device_tree" model="ir.ui.view">
+        <field name="name">device.device.tree</field>
+        <field name="model">device.device</field>
+        <field name="arch" type="xml">
+            <tree string="Devices">
+                <field name="name"/>
+                <field name="shared"/>
+                <field name="device_type_id"/>
+                <field name="device_brand_id"/>
+                <field name="device_model_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_device_form" model="ir.ui.view">
+        <field name="name">device.device.form</field>
+        <field name="model">device.device</field>
+        <field name="arch" type="xml">
+            <form string="Device">
+                <sheet>
+                    <group>
+                        <field name="name" string="Name"/>
+                        <field name="shared" string="Shared"/>
+                        <field name="device_type_id" string="Device Type"/>
+                        <field name="device_brand_id" string="Device Brand"/>
+                        <field name="device_model_id" string="Device Model"/>
+                    </group>
+                    <group>
+                        <field name="attributes" widget="many2many_tags" string="Attributes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_device" model="ir.actions.act_window">
+        <field name="name">Devices</field>
+        <field name="res_model">device.device</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_device"
+              name="Devices"
+              parent="device_management_root_menu"
+              action="action_device"/>
+</odoo>

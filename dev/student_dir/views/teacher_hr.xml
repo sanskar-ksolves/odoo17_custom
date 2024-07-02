@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="teacher_hr_tree_view" model="ir.ui.view">
+            <field name="name">teacher.hr.tree.view</field>
+            <field name="model">hr.teacher</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Name"/>
+                    <field name="age" string="Age"/>
+                </tree>
+            </field>
+        </record>
+        <record id="teacher_hr_form_view" model="ir.ui.view">
+            <field name="name">teacher.hr.form.view</field>
+            <field name="model">hr.teacher</field>
+            <field name="arch" type="xml">
+                <form string="Teacher's Detail">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                            <field name="age" string="Age"/>
+                            <field name="class_id" string="Classes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="teacher_hr_action" model="ir.actions.act_window">
+            <field name="name">Teacher</field>
+            <field name="res_model">hr.teacher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="teacher_hr_main_menu"
+                  name="Teacher's Details"
+                  parent="teacher_hr_root_menu"
+                  action="teacher_hr_action"/>
+    </data>
+</odoo>

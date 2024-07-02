@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_class_subject,access_student_class_subject,model_stu_student_class_subject,base.group_user,1,1,1,1
+access_student_division,access_student_division,model_stu_student_division,base.group_user,1,1,1,1
+access_exams,access_exams,model_stu_exams,base.group_user,1,1,1,1
+access_school_year,access_school_year,model_stu_school_year,base.group_user,1,1,1,1
+access_class,access_class,model_stu_class,base.group_user,1,1,1,1
+access_student_info,access_student_info,model_stu_student_info,student_dir.school_admin_user_group,1,1,1,1
+access_student_class,access_student_class,model_stu_student_class,base.group_user,1,1,1,1
+access_student_exam,access_student_exam,model_stu_student_exam,base.group_user,1,1,1,1
+access_student_subjects,access_student_subjects,model_stu_student_subjects,base.group_user,1,1,1,1
+access_subject,access_subject,model_stu_subject,base.group_user,1,1,1,1
+access_odoo_fees,access_odoo_fees,model_stu_odoo_fees,base.group_user,1,1,1,1
+access_schedule_exam,access_schedule_exam,model_stu_schedule_exam,base.group_user,1,1,1,1
+access_teacher,access_teacher,model_hr_teacher,base.group_user,1,1,1,1
+access_wizard,access_wizard,model_test_wizard,base.group_user,1,1,1,1
+access_student_info_wizard,access_student_info_wizard,model_stu_student_info_wizard,base.group_user,1,1,1,1

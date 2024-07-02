@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="schedule_exam_wizard_form_view" model="ir.ui.view">
+            <field name="name">schedule.exam.wizard.form.view</field>
+            <field name="model">stu.schedule.exam</field>
+            <field name="arch" type="xml">
+                <form string="Schedule Exams">
+                    <group>
+                        <field name="class_id" required="1"/>
+                        <field name="exam_date" required="1"/>
+                        <field name="class_subject" required="1"/>
+                    </group>
+                    <footer>
+                        <button string="Schedule Exams" type="object" name="schedule_exams" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="schedule_exam_wizard_action" model="ir.actions.act_window">
+            <field name="name">Schedule Exam</field>
+            <field name="res_model">stu.schedule.exam</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="student_dir.schedule_exam_wizard_form_view"/>
+
+        </record>
+
+
+        <!--        <menuitem id="student_exam_main_menu"-->
+        <!--                  name="List Exam"-->
+        <!--                  parent="student_exam_root_menu"-->
+        <!--                  action="student_exam_action"/>-->
+    </data>
+
+
+</odoo>

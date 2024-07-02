@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="class_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <br/>
+                            <br/>
+                            <ul>
+                                <li>Name:<span t-field="o.name"/> </li>
+                                <li>Student:<span t-field="o.student_id.name" /></li>
+                                <li>Class:<span t-field="o.class_id.name" /></li>
+                                <li>Division: <span t-field="o.division_id.name" /></li>
+                                <li>Year: <span t-field="o.year.name" /></li>
+                                <li>Subjects:
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Subject Name</th>
+                                                <th>Subject ID Name</th>
+                                                <th>Subject Code</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="o.subjects" t-as="s">
+                                                <tr>
+                                                    <td><span t-field="s.name"/></td>
+                                                    <td><span t-field="s.subject_id.name"/></td>
+                                                    <td><span t-field="s.subject_id.code"/></td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+<!--    <report-->
+<!--        id="test_report_button_qweb"-->
+<!--        model="stu.student_info"-->
+<!--        report_type="qweb-pdf"-->
+<!--        string="Download the report"-->
+<!--        name="student_dir.test_report_qweb"-->
+<!--        file="student_dir.test_report_qweb"-->
+<!--    />-->
+
+    <record id="class_template_report_button" model="ir.actions.report">
+        <field name="name">Print Report</field>
+        <field name="model">stu.student_class</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">student_dir.class_report_template</field>
+        <field name="report_file">student_dir.class_report_template</field>
+        <field name="print_report_name">'Badge - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_stu_student_class"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

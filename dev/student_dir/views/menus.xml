@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="school_main_menu"
+              name="School"/>
+    <!--menu for student class and stu class-->
+    <menuitem id="student_class_root_menu"
+              name="Class"
+              parent="school_main_menu"
+    />
+
+<!--menu for student subjects , subjects and class subjects-->
+    <menuitem id="student_subjects_root_menu"
+              name="Subjects"
+              parent="school_main_menu"
+    />
+
+<!--    menu for student divisions-->
+    <menuitem id="student_division_root_menu"
+              name="Division"
+              parent="school_main_menu"
+    />
+
+<!--menu for school year-->
+    <menuitem id="school_year_root_menu"
+              name="Year"
+              parent="school_main_menu"
+    />
+<!--    menu for exam and student exam   -->
+    <menuitem id="student_exam_root_menu"
+              name="Exams"
+              parent="school_main_menu"
+    />
+
+<!--menu for student info-->
+    <menuitem id="student_info_root_menu"
+              name="Student Info"
+              parent="school_main_menu"
+
+    />
+
+<!--    menu for fees -->
+    <menuitem id="student_fees_root_menu"
+              name="Student Fees Info"
+              parent="school_main_menu"
+
+    />
+<!--    menu for hr(teacher)-->
+    <menuitem id="teacher_hr_root_menu"
+              name="Teachers Info"
+              parent="school_main_menu"
+
+    />
+    <menuitem id="sample_test_menu"
+              name="Class Subjects Menu"
+              />
+<!--    <menuitem id="client_action_test_menu"-->
+<!--              name="Client Acion menu" />-->
+</odoo>

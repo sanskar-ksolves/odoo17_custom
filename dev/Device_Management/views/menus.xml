@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="device_management_main_menu"
+              name="Device Management"/>
+    <!--menu for Device-->
+    <menuitem id="device_management_root_menu"
+              name="Device"
+              parent="device_management_main_menu"
+    />
+    <menuitem id="device_attribute_root_menu"
+              name="Device Attribute"
+              parent="device_management_main_menu"
+    />
+    <menuitem id="device_employee_root_menu"
+              name="Employee"
+              parent="device_management_main_menu"
+    />
+
+</odoo>

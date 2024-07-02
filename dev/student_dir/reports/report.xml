@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="test_report_qweb">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>
+                                TITLE for report
+                            </h2>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+<!--    <report-->
+<!--        id="test_report_button_qweb"-->
+<!--        model="stu.student_info"-->
+<!--        report_type="qweb-pdf"-->
+<!--        string="Download the report"-->
+<!--        name="student_dir.test_report_qweb"-->
+<!--        file="student_dir.test_report_qweb"-->
+<!--    />-->
+
+    <record id="test_report_button_qweb" model="ir.actions.report">
+        <field name="name">Print Badge</field>
+        <field name="model">stu.student_info</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">student_dir.test_report_qweb</field>
+        <field name="report_file">student_dir.test_report_qweb</field>
+        <field name="print_report_name">'Badge - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_stu_student_info"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

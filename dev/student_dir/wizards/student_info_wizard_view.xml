@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_student_info_wizard_form" model="ir.ui.view">
+            <field name="name">student.info.wizard.form</field>
+            <field name="model">stu.student_info_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Student Info Wizard">
+                    <group>
+                        <field name="student_id" invisible="1"/>
+                        <field name="name"/>
+                        <field name="roll_no"/>
+                        <field name="dob"/>
+                        <field name="age"/>
+                        <field name="address"/>
+                        <field name="class_id"/>
+                        <field name="subject_ids"/>
+                        <field name="fees_id"/>
+                    </group>
+                    <footer>
+                        <button string="Save" type="object" name="action_save_student_info" class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_student_info_wizard" model="ir.actions.act_window">
+            <field name="name">Student Info Wizard</field>
+            <field name="res_model">stu.student_info_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_info_wizard_form"/>
+            <field name="target">new</field>
+            <field name="context">{}</field>
+        </record>
+    </data>
+</odoo>

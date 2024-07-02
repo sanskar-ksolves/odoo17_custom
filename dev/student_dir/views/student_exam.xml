@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="student_stuexam_tree_view" model="ir.ui.view">
+            <field  name="name">student.stuexam.tree.view</field>
+            <field  name="model">stu.student_exam</field>
+            <field  name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Name"/>
+                    <field name="exam_id" string="Exam"/>
+                    <field name="student_class_id" string="Student Class"/>
+                    <field name="marks" string="Marks"/>
+                </tree>
+            </field>
+        </record>
+        <record id="student_stuexam_form_view" model="ir.ui.view">
+            <field name="name">student.stuexam.form.view</field>
+            <field name="model">stu.student_exam</field>
+            <field name="arch" type="xml">
+                <form string="Student Exam">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                            <field name="exam_id" string="Exam"/>
+                            <field name="student_class_id" string="Student Class"/>
+                            <field name="marks" string="Marks"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_stuexam_action" model="ir.actions.act_window">
+            <field name="name">stuexam</field>
+            <field name="res_model">stu.student_exam</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="student_stuexam_main_menu"
+              name="List Stu Exam"
+              parent="student_exam_root_menu"
+              action="student_stuexam_action"/>
+    </data>
+</odoo>

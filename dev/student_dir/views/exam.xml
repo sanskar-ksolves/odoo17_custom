@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="student_exam_tree_view" model="ir.ui.view">
+            <field name="name">student.exam.tree.view</field>
+            <field name="model">stu.exams</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+                        <button name="%(student_dir.schedule_exam_wizard_action)d" string="Schedule Exams" type="action" class="oe_highlight"/>
+                    </header>
+                    <field name="name"/>
+                    <field name="class_subject"/>
+                    <field name="ref"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="student_exam_form_view" model="ir.ui.view">
+            <field name="name">student.exam.form.view</field>
+            <field name="model">stu.exams</field>
+            <field name="arch" type="xml">
+                <form string="exams">
+                    <header>
+                        <button name="%(student_dir.schedule_exam_wizard_action)d" string="Schedule Exams" type="action" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name" />
+                            <field name="class_id" string="Class" />
+                            <field name="class_subject" string="Class Subject" />
+                            <field name="ref" string="Study Reference" />
+                            <field name="exam_date" string="Exam Date" />
+                            <field name="exam_completed" string="Exam Complete Status" />
+                        </group>
+
+                        <notebook>
+                            <page string="Students">
+                                <field name="student_ids">
+                                    <tree string="Students" editable="bottom">
+                                        <field name="name" string="Name" />
+                                        <field name="roll_no" string="Roll No" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Subject">
+                                <field name="subject_id" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_exam_action" model="ir.actions.act_window">
+            <field name="name">exam</field>
+            <field name="res_model">stu.exams</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="student_exam_main_menu"
+                  name="List Exam"
+                  parent="student_exam_root_menu"
+                  action="student_exam_action"/>
+    </data>
+    <record id="student_dir.stu_subject_action" model="ir.actions.act_window">
+        <field name="name">Student Edited</field>
+    </record>
+
+</odoo>

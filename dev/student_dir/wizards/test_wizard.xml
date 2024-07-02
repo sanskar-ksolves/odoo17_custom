@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="test_wizard_tree_view" model="ir.ui.view">
+            <field name="name">test.wizard.tree.view</field>
+            <field name="model">test.wizard</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                    <field name="dob"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="test_wizard_form_view" model="ir.ui.view">
+            <field name="name">test.wizard.form.view</field>
+            <field name="model">test.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                            <field name="roll_no" string="Roll No"/>
+                            <field name="dob" string="Date Of Birth"/>
+                            <field name="age" string="Age"/>
+                            <field name="address" string="Address"/>
+                            <field name="test" string="Test"/>
+                        </group>
+                        <notebook>
+
+                            <group>
+                                <field name="class_id" string="Class"/>
+                            </group>
+                            <group>
+                                <field name="subject_ids" string="Subjects"/>
+                            </group>
+                            <group>
+                                <field name="fees_id" string="Fees"/>
+                            </group>
+                        </notebook>
+                        <footer>
+                            <button name="update_record_button" type="object" class="oe_highlight" string="Update"/>
+                            <button string="Cancel" class="btn-secondry" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="test_wizard_action" model="ir.actions.act_window">
+            <field name="name">Student Info</field>
+            <field name="res_model">test.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="student_dir.test_wizard_form_view"/>
+<!--            <field name="view_type">form</field>-->
+        </record>
+
+<!--        &lt;!&ndash; Menu Item &ndash;&gt;-->
+<!--        <menuitem id="student_info_main_menu"-->
+<!--                  name="Student Information"-->
+<!--                  parent="student_info_root_menu"-->
+<!--                  action="student_info_action"/>-->
+    </data>
+</odoo>

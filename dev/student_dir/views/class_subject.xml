@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="test_inherit_field" model="ir.ui.view">
+        <field name="name">test.inherit.field</field>
+        <field name="model">stu.student_class_subject</field>
+        <field name="inherit_id" ref="student_dir.student_classSub_form_view" />
+        <field name="arch" type="xml">
+            <field name="subject_id" position="after">
+                <field name="new_field" string="ingerited new field"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="student_classSub_tree_view" model="ir.ui.view">
+            <field name="name">student.classSub.tree.view</field>
+            <field name="model">stu.student_class_subject</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="subject_id"/>
+                    <field name="class_id"/>
+                    <field name="division_id"/>
+                    <field name="max_marks"/>
+                    <field name="ref"/>
+                </tree>
+            </field>
+        </record>
+      <record id="test_server_action_button" model="ir.actions.server">
+        <field name="name">Print on Terminal</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="model_stu_student_class_subject"/>
+        <field name="binding_model_id" ref="model_stu_student_class_subject"/>
+        <field name="code">records.action_button_method()</field>
+    </record>
+
+        <record id="student_classSub_form_view" model="ir.ui.view">
+            <field name="name">student.classSub.form.view</field>
+            <field name="model">stu.student_class_subject</field>
+            <field name="arch" type="xml">
+                <form string="Class Subject">
+                  <header>
+                      <button name="%(student_dir.student_divisions_action)d " string="Go to Divisions" type="action"/>
+                      <button name="action_button_method" string="Click Me" type="object"/>
+                      <button name="check_orm" string="Check ORM"  type="object" class="oe_highlight"/>
+                  </header>
+                  <sheet>
+                  <group>
+                    <group>
+                        <field name="subject_id" string="Subject"/>
+                        <field name="class_id" string="Class"/>
+
+                    </group>
+                    <group>
+                        <field name="division_id" string="Division"/>
+                        <field name="max_marks" string="Maximum Marks"/>
+                        <field name="ref" string="Reference Name"/>
+                    </group>
+                  </group>
+                  </sheet>
+
+                </form>
+            </field>
+        </record>
+<!-- this is action for the above views -->
+    <record id="stu_subject_action" model="ir.actions.act_window">
+        <field name="name">Student Subject</field>
+        <field name="res_model">stu.student_class_subject</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<!--  this is menu that specifies that whcih fields witll be shown and on under which there child will be shown-->
+<!--    hearchy will be like-->
+<!--    student->-->
+<!--        weblearn->-->
+<!--            student list->-->
+
+    <menuitem id="wb_student_menu"
+              parent="student_subjects_root_menu"
+              name="Class Subject List"
+              action="stu_subject_action"
+    />
+  </data>
+</odoo>

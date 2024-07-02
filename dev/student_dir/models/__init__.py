@@ -1,0 +1,1 @@
+from . import  class_subject,divisions,exam,school_year,stu_class,student,student_class,student_exam,student_subjects,subject,stu_fees,teacher_hr
